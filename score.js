@@ -8,9 +8,11 @@ var p1Score = 0
 var p2Score = 0
 
 var gameOver = false
-var winningScore = document.getElementById('winning-score')
+var winningScoreDisplay = document.querySelector('p span')
+var winningScore = 7
 
 var reset = document.getElementById('reset')
+var numInput = document.querySelector('input')
 
 p1button.addEventListener('click', function() {
   if(!gameOver){
@@ -42,4 +44,9 @@ reset.addEventListener('click', function() {
     p1Display.classList.remove('winner')
     p2Display.classList.remove('winner')
     gameOver = false
+})
+
+numInput.addEventListener('change', function(){
+  winningScoreDisplay.textContent = numInput.value
+  winningScore = Number(numInput.value)
 })
