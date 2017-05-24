@@ -11,7 +11,7 @@ var gameOver = false
 var winningScoreDisplay = document.querySelector('p span')
 var winningScore = 7
 
-var reset = document.getElementById('reset')
+var resetButton = document.getElementById('reset')
 var numInput = document.querySelector('input')
 
 p1button.addEventListener('click', function() {
@@ -36,17 +36,23 @@ p2button.addEventListener('click', function() {
   }
 })
 
-reset.addEventListener('click', function() {
-    p1Score = 0
-    p2Score = 0
-    p1Display.textContent = p1Score
-    p2Display.textContent = p2Score
-    p1Display.classList.remove('winner')
-    p2Display.classList.remove('winner')
-    gameOver = false
+resetButton.addEventListener('click', function() {
+  reset()
 })
 
+function reset() {
+  p1Score = 0
+  p2Score = 0
+  p1Display.textContent = p1Score
+  p2Display.textContent = p2Score
+  p1Display.classList.remove('winner')
+  p2Display.classList.remove('winner')
+  gameOver = false
+}
+
 numInput.addEventListener('change', function(){
-  winningScoreDisplay.textContent = numInput.value
-  winningScore = Number(numInput.value)
+  //this refers to what event is being listened on in this case
+  winningScoreDisplay.textContent = this.value
+  winningScore = Number(this.value)
+  reset()
 })
